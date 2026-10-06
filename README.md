@@ -1,73 +1,73 @@
 # DevLessonSkill
 
-一个 Claude Code 技能：**开发经验的总结与复用**。  
-做程序性任务（写脚本、开发小工具、做游戏 mod、开发 GUI 工具等）时，任务开始前先查历史踩坑经验，任务完成后把可复用经验沉淀进经验库，减少重复试错。
+A Claude Code skill for **summarizing and reusing development experience**.
+For programmatic tasks (writing scripts, building small tools, making game mods, building GUI tools, etc.), it consults past pitfalls before you start and distills reusable lessons into the experience library when you finish — so you stop repeating the same mistakes.
 
-**定位**：不是通用记忆库，也不是团队 wiki。它是中低频开发任务的“踩坑备忘录”——记的准、找得到、不啰嗦。  
-宽入严出：总结时不设门槛，入库前独立质检，只留模型靠已有知识猜不到、或会猜错的坑。
+**Positioning**: not a general memory bank, not a team wiki. It's a "pitfall cheat-sheet" for low-to-mid-frequency development tasks — precise, easy to find, and concise.
+Wide in, strict out: no bar for what gets summarized, but each lesson is independently quality-checked before entering the library — keeping only the pitfalls a model can't infer (or would get wrong) from what it already knows.
 
-## 它不做什么
+## What it doesn't do
 
-- 不对聊天/问答触发，只服务程序性开发任务。
-- 不做自动检索、知识图谱、分层存储、自演化；低频场景下这些是纯开销。
-- 不把一次性工程细节写进经验库，只进 `project_summary/` 写完结报告。
-- 不强行总结通用常识、工具基本用法、官方文档已明确警告的内容。
+- Doesn't trigger on chat / Q&A; it only serves programmatic development tasks.
+- No auto-retrieval, knowledge graph, layered storage, or self-evolution; at low frequency these are pure overhead.
+- Doesn't write one-off project details into the experience library — those go into `project_summary/` as a wrap-up report.
+- Doesn't force-summarize common knowledge, basic tool usage, or anything already spelled out in official docs.
 
-## 和通用 memory / skill 项目的区别
+## How it differs from general memory / skill projects
 
-通用方案多面向高频、通用、长期知识库，强调自动检索、分层存储和自演化。  
-DevLessonSkill 面向中低频、一次性/工具开发任务，只做分类路由 + 短经验文件 + 独立质检，优先降低上下文成本和人工维护成本。  
-目标不是建大而全的 wiki，而是“下次别再踩同一个坑”。
+General solutions target high-frequency, general-purpose, long-lived knowledge bases, emphasizing auto-retrieval, layered storage, and self-evolution.
+DevLessonSkill targets low-to-mid-frequency, one-off / tool-building tasks: category routing + short experience files + independent quality check, prioritizing low context cost and low manual maintenance.
+The goal isn't a large, complete wiki — it's "don't step on the same pitfall twice".
 
-## 一键安装
+## One-line install
 
-需已安装 [Claude Code](https://claude.com/claude-code)。
+Requires [Claude Code](https://claude.com/claude-code).
 
-**方式一（新版 Claude Code，一条命令）**：
+**Option 1 (newer Claude Code, one command)**:
 
 ```
 /plugin install dev-lesson --marketplace wwc7654321/DevLessonSkill
 ```
 
-**方式二（两步，兼容旧版）**：
+**Option 2 (two steps, compatible with older versions)**:
 
 ```bash
 claude plugin marketplace add wwc7654321/DevLessonSkill
 claude plugin install dev-lesson@dev-lesson-marketplace
 ```
 
-装完重启 Claude Code（或在会话里 `/reload-plugins`）即可生效。
+Restart Claude Code (or run `/reload-plugins` in a session) for it to take effect.
 
-## 使用方式
+## Usage
 
-1. **自动调用（推荐）**：写进 `CLAUDE.md`（用户级或项目级均可），开发任务开始前读经验、结束后总结，无需手动说话：
+1. **Automatic (recommended)**: add a rule to `CLAUDE.md` (user-level or project-level). It reads experience before a task and summarizes after, with no manual prompting:
 
 ```markdown
-仅对程序性任务（写脚本、开发工具、做 mod 等）生效，聊天/问答等其它对话不触发。触发时按 dev-lesson 技能执行：任务开始前先按任务类别读经验，任务完成后总结经验。
+Applies only to programmatic tasks (writing scripts, building tools, making mods, etc.), not to chat or Q&A. When triggered, follow the dev-lesson skill: read past experience by task category before starting, and summarize experience after finishing.
 ```
 
-2. **手动调用**（同一个命令 `/dev-lesson`，分两个场景）：
+2. **Manual** (same command `/dev-lesson`, two scenarios):
 
-| 场景 | 命令 | 作用 |
-|------|------|------|
-| 开发任务开始前 | `/dev-lesson` | 读对应分类经验，防重复踩坑 |
-| 开发任务结束后 | `/dev-lesson` | 提炼可复用经验、质检后写入经验库 |
+| Scenario | Command | What it does |
+|----------|---------|--------------|
+| Before a dev task | `/dev-lesson` | Read the matching category's experience to avoid known pitfalls |
+| After a dev task | `/dev-lesson` | Distill reusable lessons, quality-check, and write them into the library |
 
-## 结构
+## Structure
 
 ```
 skills/dev-lesson/
-  SKILL.md              # 入口：经验分类、复用、总结、质检流程
+  SKILL.md              # Entry: experience categories, reuse, summarize, quality-check flow
   lessons/
-    class.md            # 任务分类路由词典
-    *.md                # 各类可复用经验（本地模型翻译 / Godot mod / WinForms…）
-  project_summary/      # 一次性工程的完结报告（不进经验库）
-  总结经验.md / 经验质检.md / 工作目录.md
+    class.md            # Task-category routing dictionary
+    *.md                # Reusable experience by category (local model translation / Godot mods / WinForms…)
+  project_summary/      # Wrap-up reports for one-off projects (not in the library)
+  summarize-experience.md / experience-quality-check.md / working-directory.md
 ```
 
-- **可复用经验** → 进 `lessons/`，由 `class.md` 路由。
-- **一次性工程**（做完即用、不会再写二代）→ 只在 `project_summary/` 写完结报告，不污染经验库。
+- **Reusable experience** → goes into `lessons/`, routed by `class.md`.
+- **One-off projects** (done-and-used, never rebuilt) → only a wrap-up report in `project_summary/`, keeping the library clean.
 
-## 许可
+## License
 
 [MIT](LICENSE)

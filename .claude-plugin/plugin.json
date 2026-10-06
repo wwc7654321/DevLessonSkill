@@ -1,6 +1,6 @@
 {
   "name": "dev-lesson",
-  "description": "开发经验的总结与复用：程序性开发任务（写脚本、开发小工具、做游戏 mod、开发 GUI 工具等）开始前查历史踩坑经验，完成后沉淀可复用经验。",
+  "description": "Summarizing and reusing development experience: consult past pitfalls before a programmatic task (scripts, small tools, game mods, GUI tools, etc.) and distill reusable lessons when it's done.",
   "version": "1.0.0",
   "author": {
     "name": "wwc"
@@ -10,8 +10,8 @@
   "license": "MIT",
   "keywords": [
     "dev-lesson",
-    "经验",
-    "教训",
+    "lessons-learned",
+    "experience",
     "skills",
     "workflow"
   ]

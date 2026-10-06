@@ -1,6 +1,6 @@
 {
   "name": "dev-lesson-marketplace",
-  "description": "开发经验的总结与复用（dev-lesson 技能）",
+  "description": "Summarizing and reusing development experience (the dev-lesson skill)",
   "owner": {
     "name": "wwc"
   },
@@ -8,7 +8,7 @@
     {
       "name": "dev-lesson",
       "source": "./",
-      "description": "开发经验的总结与复用：程序性开发任务开始前查经验、完成后总结经验"
+      "description": "Summarizing and reusing development experience: consult past lessons before a programmatic task and distill new ones after."
     }
   ]
 }
