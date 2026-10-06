@@ -38,6 +38,26 @@ claude plugin install dev-lesson@dev-lesson-marketplace
 
 Restart Claude Code (or run `/reload-plugins` in a session) for it to take effect.
 
+## First-run note: allow reads to the skill's files
+
+dev-lesson reads several of its own files while it runs (the lesson library, checklists). Those live in the plugin cache, outside your project folder, so the first time it reads one, Claude Code asks:
+
+> Read outside the working directories?
+
+Choose **"Yes, and keep allowing any reads outside the working directories"**. It's a one-time prompt — after that the skill runs without asking.
+
+**Security-conscious alternative** (approve only the plugin directory instead of all outside reads): add it to `~/.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "additionalDirectories": ["~/.claude/plugins/cache/dev-lesson-marketplace"]
+  }
+}
+```
+
+On Windows use the full path, e.g. `C:\\Users\\<you>\\.claude\\plugins\\cache\\dev-lesson-marketplace` (double the backslashes in JSON). Point it at the marketplace folder, not a version-specific subfolder — versions change when the plugin updates.
+
 ## Usage
 
 1. **Automatic (recommended)**: add a rule to `CLAUDE.md` (user-level or project-level). It reads experience before a task and summarizes after, with no manual prompting:
