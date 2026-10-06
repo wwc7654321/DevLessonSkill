@@ -1,0 +1,4 @@
+To complete the user's task you may write a number of scripts: some are temporary, run once and adjusted on the fly; some actually execute the task; and some verify the task environment or check assumptions. Once there is more than one temporary script, they should all go under a directory whose name ends with `work` or `work_dir`.
+Each task should have its own subdirectory (e.g. `xx_work\check_curl_cmd\test.py`, or `xx_work\do_work_1\formal.py`, `input.json`, `output.json`).
+If there are many files, you can add a `README.md` inside the working directory explaining each script's function and purpose (what problem prompted writing it). This may help when summarizing experience after the task is done. A new task need not try to read it.
+Each time you write a new script, briefly mention in the agent output what you're trying to do, so the user is aware (or, when permissions are off, the user can use this to decide whether to allow it).

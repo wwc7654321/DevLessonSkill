@@ -1,8 +1,8 @@
-# 具体工程完结报告
+# Wrap-up reports for specific projects
 
-这里存放**一次性工程**（无复用价值、不会再写二代）的完结报告，作为档案留存。
+This directory holds wrap-up reports for **one-off projects** (no reuse value, never to be rebuilt), kept as archive.
 
-- **什么时候写**：任务完成（或告一段落）时，判断「以后不会再做类似任务」→ 不提炼经验，改在此写一份完结报告。
-- **写什么**：做了什么、最终方案/结论、遗留问题。与具体工程绑定，无需通用化。
-- **不进 class.md**：完结报告是档案，不是可复用经验，不参与「复用经验」检索，也不进 lessons/。
-- **命名**：`<工程名>.md`。
+- **When to write**: when a task finishes (or reaches a milestone), judge "this kind of task won't be done again" → don't distill lessons; instead write a wrap-up report here.
+- **What to write**: what was done, the final approach / conclusion, leftover issues. Bound to the specific project; no need to generalize.
+- **Does not enter class.md**: a wrap-up report is an archive, not reusable experience; it doesn't participate in "reuse experience" retrieval, nor does it go into lessons/.
+- **Naming**: `<project name>.md`.

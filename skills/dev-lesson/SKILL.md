@@ -1,25 +1,32 @@
 ---
 name: dev-lesson
-description: 当用户进行程序性开发任务（写脚本、开发小工具、做游戏 mod、开发 GUI 工具等）时使用。聊天、问答等非开发对话不触发。
+description: Use when doing programmatic development tasks — writing scripts, building small tools, making game mods, building GUI tools, etc. Not triggered for chat or Q&A.
 ---
 
-# 开发经验的总结与复用
-## 经验分类
-用户可能让你进行各种任务的开发，先试图弄清用户的具体需求类型，例如是写一个类爬虫？还是开发一个本地小工具？还是做一个游戏的mod？
-可以在 `lessons/class.md` 中维护一个词典（每条描述：识别、边界、经验文件、跨类复用，格式见 `总结经验.md` 的「维护 class.md」），用来归类各种任务类型。
+# Summarizing and reusing development experience
 
-注意分类与任务不是一一对应：一个任务可能横跨多个分类（如「改 Godot 游戏翻译」= Godot 解包/打包 + 翻译，两个分类），各归各类、分别读各自经验。
+## Experience categories
 
-## 任务完成后总结经验
-读 `总结经验.md`，按它提炼经验、写入对应分类 md。
+The user may ask you to develop all kinds of things. First figure out what kind of task it is: a crawler? a small local tool? a game mod?
 
-无复用价值的一次性工程（做完即用、不会再写二代）不提炼经验，改在 `project_summary/` 写该工程的完结报告（做了什么、最终方案、遗留问题），不进 class.md。
+Maintain a dictionary in `lessons/class.md` (each entry: identification, boundary, experience file, cross-category reuse — format per the "Maintaining class.md" section of `summarize-experience.md`) to classify task types.
 
-### 写入前质检
-经验草稿不直接写入。逐条附来源（实测/推测）交独立子 agent，按 经验质检.md 裁定后再定。子 agent 不接收任务过程与踩坑故事，只提供经验相关规则和内容，保持干净上下文。
+Note that a category is not a one-to-one match with a task: one task can span several categories (e.g. "translating a Godot game" = Godot unpacking/repacking + translation, two categories). File each under its own category and read each category's experience separately.
 
-## 复用经验
-任务开始前，在class.md中如果找到过对应的分类，则阅读对应的md，防止重复犯错。 过滤出意思相近的经验，逐条核对本任务适用/不适用，不适用的写明原因。
+## Summarizing experience after a task
 
-## 维持工作目录整洁
-当你决定输出一次性脚本(.py/.sh等)到文件时，遵循 工作目录.md。输出其他临时文件同理，不应该把文件散落在当前路径下。
+Read `summarize-experience.md`, distill the lessons per it, and write them into the matching category's file.
+
+A one-off project with no reuse value (done-and-used, never rebuilt) is not distilled into lessons; instead write a wrap-up report in `project_summary/` (what was done, final approach, leftover issues), and do not add it to class.md.
+
+### Quality check before writing
+
+Do not write experience drafts directly. For each lesson, attach its source (tested / inferred) and hand it to an independent subagent, which decides per `experience-quality-check.md`. The subagent receives only the rules and the lesson content — not the task process or the pitfall stories — to keep a clean context.
+
+## Reusing experience
+
+Before starting a task, if you find a matching category in class.md, read the corresponding file to avoid repeating mistakes. Filter out lessons with similar meaning and check each against this task: applicable or not, and if not, say why.
+
+## Keeping the working directory tidy
+
+When you decide to write one-off scripts (.py/.sh, etc.) to files, follow `working-directory.md`. The same goes for other temporary files — don't scatter files under the current path.
