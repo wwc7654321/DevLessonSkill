@@ -1,0 +1,14 @@
+{
+  "name": "dev-lesson-marketplace",
+  "description": "开发经验的总结与复用（dev-lesson 技能）",
+  "owner": {
+    "name": "wwc"
+  },
+  "plugins": [
+    {
+      "name": "dev-lesson",
+      "source": "./",
+      "description": "开发经验的总结与复用：程序性开发任务开始前查经验、完成后总结经验"
+    }
+  ]
+}
