@@ -8,7 +8,7 @@
 - **先定游戏真实版本、再下 Godot**：exe 内嵌 `Godot Engine v4.x.y` 字符串、`project.godot` 的 `config/features=PackedStringArray("4.x",...)`、GDRE 输出的 `Detected Engine Version` 三处可查。github.com 超时时用 GitHub API 直链下载：`curl api.github.com/repos/godotengine/godot/releases/tags/<tag>` 拿资产 id，再 `curl -H "Accept: application/octet-stream" .../releases/assets/<id>`（重定向到可达的 objects.githubusercontent.com）；tuxfamily 旧镜像已空。
 - **GDRE Tools**（Godot RE Tools）：解包/打包 PCK 的第三方工具，同样要下载，但比 Godot 简单（单 exe、无配置）。
 
-如果当前目录没看到，用户也没提。则询问用户本地是否有，没有的话建议下载。
+**大型工具别静默下载、别塞进游戏目录**：Godot 解压后几十~几百 MB、GDRE 也是整包 exe。首次用到先问用户「本地有没有、放哪个全局目录」，由用户指定目录，后续任务直接复用、不重复下。**绝不静默下载大件工具丢进任务/游戏目录占地**（本工程就曾误把 Godot 4.5.1 静默下到游戏目录，后按用户要求迁走）。
 
 ## 一、认识 Godot 4 翻译体系（先别急着动手）
 
