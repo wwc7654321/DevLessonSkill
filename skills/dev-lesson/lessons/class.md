@@ -12,3 +12,7 @@
 ## .NET WinForms 桌面工程（DotnetWinForms）
 - 边界：用 C#/.NET 写 WinForms 桌面/托盘/窗体工具，含后台循环 + 界面刷新。
 - 经验文件：`DotnetWinForms.md`
+
+## 项目发布/成果物（ReleasePublish）
+- 边界：把开发好的项目整理成干净、可发布的仓库（净化 config、git-ignore 发布产物、打 zip），准备推 GitHub / 上传 Releases。
+- 经验文件：`ReleasePublish.md`
